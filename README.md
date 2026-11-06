@@ -178,4 +178,4 @@ Navigate to **`http://localhost:5173/admin`**:
 ---
 
 &copy; 2026 QUIET BATTLES™ ATELIER. All rights reserved.
-LIVE DEMO LINK : fashion-e-commerce-website-three.vercel.app.
+LIVE DEMO LINK : https://fashion-e-commerce-website-three.vercel.app.
