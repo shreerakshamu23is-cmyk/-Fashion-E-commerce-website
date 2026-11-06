@@ -1,8 +1,7 @@
 # QUIET BATTLES™
 
 > **"WEAR YOUR BATTLES."**  
-> Luxury streetwear forged in silence. An editorial, cinematic full-stack web platform built for the **Full-Stack Web Developer Hiring Assessment**.  
-> Featured Core Product: **The Gentle Armor T-Shirt** (₹999, relaxed fit, heavyweight organic cotton).
+> Luxury streetwear forged in silence.
 
 ---
 
@@ -147,11 +146,6 @@ CLIENT_URL=http://localhost:5173
 
 Navigate to **`http://localhost:5173/admin`**:
 
-| Field | Evaluation Default |
-| :--- | :--- |
-| **Email** | `admin@quietbattles.com` |
-| **Password** | `admin123` |
-| **1-Click Login** | In development mode, click **"Auto-fill Assessment Demo Login"** |
 
 ---
 
@@ -184,3 +178,4 @@ Navigate to **`http://localhost:5173/admin`**:
 ---
 
 &copy; 2026 QUIET BATTLES™ ATELIER. All rights reserved.
+LIVE DEMO LINK : fashion-e-commerce-website-three.vercel.app.
