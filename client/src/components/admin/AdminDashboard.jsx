@@ -17,6 +17,7 @@ import {
   Copy,
 } from 'lucide-react';
 import { useAdminAuth } from '../../context/AdminAuthContext';
+import { apiUrl } from '../../services/api';
 import Button from '../common/Button';
 
 export default function AdminDashboard() {
@@ -49,15 +50,15 @@ export default function AdminDashboard() {
     setLoading(true);
     try {
       const [sRes, pRes] = await Promise.all([
-        fetch('/api/series').then((r) => r.json()),
-        fetch('/api/products').then((r) => r.json()),
+        fetch(apiUrl('/series')).then((r) => r.json()),
+        fetch(apiUrl('/products')).then((r) => r.json()),
       ]);
       setSeriesList(Array.isArray(sRes) ? sRes : []);
       setProductsList(Array.isArray(pRes) ? pRes : []);
 
       // If series exists, load chapters for series 01 or all
       if (sRes && sRes.length > 0) {
-        const chapRes = await fetch(`/api/series/${sRes[0].slug}/chapters`).then((r) =>
+        const chapRes = await fetch(apiUrl(`/series/${sRes[0].slug}/chapters`)).then((r) =>
           r.json()
         );
         setChaptersList(Array.isArray(chapRes) ? chapRes : []);
@@ -1185,4 +1186,3 @@ export default function AdminDashboard() {
     </div>
   );
 }
-

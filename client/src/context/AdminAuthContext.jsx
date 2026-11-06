@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { apiUrl } from '../services/api';
 
 const AdminAuthContext = createContext();
 
@@ -20,7 +21,7 @@ export function AdminAuthProvider({ children }) {
   const login = async (email, password) => {
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(apiUrl('/auth/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -55,7 +56,7 @@ export function AdminAuthProvider({ children }) {
       ...(options.headers || {}),
       Authorization: `Bearer ${token}`,
     };
-    return fetch(url, { ...options, headers });
+    return fetch(apiUrl(url), { ...options, headers });
   };
 
   return (
@@ -82,4 +83,3 @@ export function useAdminAuth() {
   }
   return context;
 }
-

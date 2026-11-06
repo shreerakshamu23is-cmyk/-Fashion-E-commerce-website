@@ -102,7 +102,7 @@ export default function AdminLoginModal({ isOpen, onClose }) {
 
           <div className="space-y-1.5">
             <label className="font-mono text-xs text-zinc-300 uppercase tracking-widest block font-medium">
-              PASSWORD HASH
+              PASSWORD
             </label>
             <div className="relative">
               <Lock className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -142,4 +142,3 @@ export default function AdminLoginModal({ isOpen, onClose }) {
     </div>
   );
 }
-

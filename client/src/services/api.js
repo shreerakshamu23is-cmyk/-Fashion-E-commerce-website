@@ -5,7 +5,19 @@
  * with high fidelity even during offline or independent client evaluation.
  */
 
-const API_BASE = import.meta.env.VITE_API_URL || '/api';
+const API_BASE = (import.meta.env.VITE_API_URL || '/api').replace(/\/+$/, '');
+
+export function apiUrl(path) {
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const baseHasApiPath = /\/api$/i.test(API_BASE);
+  const pathHasApiPrefix = /^\/api(?:\/|$)/i.test(normalizedPath);
+
+  return `${API_BASE}${
+    baseHasApiPath && pathHasApiPrefix
+      ? normalizedPath.slice(4)
+      : normalizedPath
+  }`;
+}
 
 export const fallbackSeries = [
   {
@@ -616,7 +628,7 @@ export const fallbackProduct = fallbackProducts[0];
  */
 export async function getSeries() {
   try {
-    const res = await fetch(`${API_BASE}/series`);
+    const res = await fetch(apiUrl('/series'));
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
     return data && data.length > 0 ? data : fallbackSeries;
@@ -631,7 +643,7 @@ export async function getSeries() {
  */
 export async function getSeriesBySlug(slug) {
   try {
-    const res = await fetch(`${API_BASE}/series/${slug}`);
+    const res = await fetch(apiUrl(`/series/${slug}`));
     if (res.status === 404) return null;
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
@@ -648,7 +660,7 @@ export async function getSeriesBySlug(slug) {
  */
 export async function getChaptersForSeries(seriesSlug) {
   try {
-    const res = await fetch(`${API_BASE}/series/${seriesSlug}/chapters`);
+    const res = await fetch(apiUrl(`/series/${seriesSlug}/chapters`));
     if (res.status === 404) return [];
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
@@ -664,7 +676,7 @@ export async function getChaptersForSeries(seriesSlug) {
  */
 export async function getChapterBySlug(seriesSlug, chapterSlug) {
   try {
-    const res = await fetch(`${API_BASE}/series/${seriesSlug}/chapters/${chapterSlug}`);
+    const res = await fetch(apiUrl(`/series/${seriesSlug}/chapters/${chapterSlug}`));
     if (res.status === 404) return null;
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
@@ -683,7 +695,7 @@ export async function getChapterBySlug(seriesSlug, chapterSlug) {
  */
 export async function getProductBySlug(slug) {
   try {
-    const res = await fetch(`${API_BASE}/products/${slug}`);
+    const res = await fetch(apiUrl(`/products/${slug}`));
     if (res.status === 404) return null;
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
@@ -700,7 +712,7 @@ export async function getProductBySlug(slug) {
  */
 export async function getProducts() {
   try {
-    const res = await fetch(`${API_BASE}/products`);
+    const res = await fetch(apiUrl('/products'));
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
     return data && data.length > 0 ? data : fallbackProducts;
