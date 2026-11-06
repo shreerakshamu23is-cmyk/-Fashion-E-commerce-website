@@ -11,12 +11,13 @@ import {
 } from 'lucide-react';
 import SectionLabel from '../components/common/SectionLabel';
 import Button from '../components/common/Button';
-import { getProductBySlug, mediaUrl } from '../services/api';
+import { getProductBySlug, getSeries, mediaUrl } from '../services/api';
 import { useCart } from '../context/CartContext';
 
 export default function Product() {
   const { slug = 'the-gentle-armor-tshirt' } = useParams();
   const [product, setProduct] = useState(null);
+  const [seriesCoverImage, setSeriesCoverImage] = useState('');
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState(null); // Requirement 10: Size required
   const [sizeError, setSizeError] = useState('');
@@ -28,11 +29,14 @@ export default function Product() {
 
   useEffect(() => {
     let mounted = true;
-    getProductBySlug(slug).then((data) => {
-      if (mounted) {
-        setProduct(data);
-        setSelectedImage(0);
-      }
+    Promise.all([getProductBySlug(slug), getSeries()]).then(([productData, seriesList]) => {
+      if (!mounted) return;
+      setProduct(productData);
+      setSelectedImage(0);
+      const relatedSeries = productData?.series_slug
+        ? seriesList.find((series) => series.slug === productData.series_slug)
+        : seriesList.find((series) => productData?.slug?.startsWith(`${series.slug}-`));
+      setSeriesCoverImage(relatedSeries?.cover_image || '');
     });
     return () => {
       mounted = false;
@@ -63,11 +67,22 @@ export default function Product() {
 
   // Filter out any empty/null values and do NOT force hardcoded t-shirt images on other products
   const cleanImages = rawImages.filter(Boolean);
+  const fallbackImage = mediaUrl(
+    product.cover_image || product.hero_image || seriesCoverImage
+  );
   if (cleanImages.length === 0) {
-    cleanImages.push(product.cover_image || product.hero_image || '/assets/photos/series-01-tshirt.webp');
+    cleanImages.push(fallbackImage || '/assets/photos/series-01-tshirt.webp');
   }
 
   const images = cleanImages.map(mediaUrl);
+  const handleImageError = (event) => {
+    const image = event.currentTarget;
+    if (fallbackImage && image.src !== new URL(fallbackImage, window.location.href).href) {
+      image.src = fallbackImage;
+      return;
+    }
+    image.style.visibility = 'hidden';
+  };
 
   // Parse sizes
   const sizes = Array.isArray(product.sizes)
@@ -144,9 +159,7 @@ export default function Product() {
               <div className="w-full h-full overflow-hidden relative">
                 <img
                   src={images[selectedImage] || images[0]}
-                  onError={(e) => {
-                    e.target.src = images[0];
-                  }}
+                  onError={handleImageError}
                   alt={`${product.name} View ${selectedImage + 1}`}
                   width="1000"
                   height="1250"
@@ -176,9 +189,7 @@ export default function Product() {
                   >
                     <img
                       src={img}
-                      onError={(e) => {
-                        e.target.src = images[0];
-                      }}
+                      onError={handleImageError}
                       alt={`Thumbnail ${idx + 1}`}
                       width="200"
                       height="200"
