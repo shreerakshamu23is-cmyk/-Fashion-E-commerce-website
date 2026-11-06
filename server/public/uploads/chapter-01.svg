@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="grad-01" cx="50%" cy="48%" r="65%">
+      <stop offset="0%" stop-color="#1c1916" stop-opacity="0.95"/>
+      <stop offset="55%" stop-color="#111111" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#090909" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="1500" fill="#0c0c0c"/>
+  <rect width="1200" height="1500" fill="url(#grad-01)"/>
+
+  <g opacity="0.12" stroke="#f4f0e8" stroke-width="0.5">
+    <line x1="120" y1="0" x2="120" y2="1500"/>
+    <line x1="1080" y1="0" x2="1080" y2="1500"/>
+    <line x1="0" y1="150" x2="1200" y2="1500"/>
+    <line x1="0" y1="1350" x2="1200" y2="1350"/>
+  </g>
+
+  <g>
+    
+      <circle cx="600" cy="700" r="320" fill="none" stroke="#222" stroke-width="1.5"/>
+      <circle cx="600" cy="700" r="180" fill="none" stroke="#c5a059" stroke-opacity="0.3" stroke-width="1"/>
+      <line x1="600" y1="200" x2="600" y2="1200" stroke="#2c2c2c" stroke-width="1"/>
+      <line x1="200" y1="700" x2="1000" y2="700" stroke="#2c2c2c" stroke-width="1"/>
+      <path d="M450 600 L600 450 L750 600 L600 750 Z" fill="#141414" stroke="#c5a059" stroke-opacity="0.4" stroke-width="1.5"/>
+    
+  </g>
+
+  <rect x="70" y="70" width="1060" height="1360" fill="none" stroke="#8c7047" stroke-opacity="0.25" stroke-width="1"/>
+
+  <text x="120" y="140" fill="#a1a1aa" font-family="'Inter', sans-serif" font-size="14" letter-spacing="0.35em">CHAPTER 01 // SERIES 01</text>
+  <text x="1080" y="140" text-anchor="end" fill="#8c7047" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.25em">ARCHIVAL EDITION</text>
+
+  <text x="600" y="1230" text-anchor="middle" fill="#f4f0e8" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="300" letter-spacing="0.1em">THE BEGINNING</text>
+  <text x="600" y="1275" text-anchor="middle" fill="#8c7047" font-family="'Inter', sans-serif" font-size="14" letter-spacing="0.4em">THE UNSEEN CRUCIBLE</text>
+  <text x="600" y="1320" text-anchor="middle" fill="#a1a1aa" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.12em">Before the world watches, the architecture of endurance is forged in quiet.</text>
+</svg>

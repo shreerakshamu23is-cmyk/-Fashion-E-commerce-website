@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="grad-05" cx="50%" cy="48%" r="65%">
+      <stop offset="0%" stop-color="#1c1916" stop-opacity="0.95"/>
+      <stop offset="55%" stop-color="#111111" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#090909" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="1500" fill="#0c0c0c"/>
+  <rect width="1200" height="1500" fill="url(#grad-05)"/>
+
+  <g opacity="0.12" stroke="#f4f0e8" stroke-width="0.5">
+    <line x1="120" y1="0" x2="120" y2="1500"/>
+    <line x1="1080" y1="0" x2="1080" y2="1500"/>
+    <line x1="0" y1="150" x2="1200" y2="1500"/>
+    <line x1="0" y1="1350" x2="1200" y2="1350"/>
+  </g>
+
+  <g>
+    
+      <circle cx="600" cy="720" r="280" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+      <circle cx="600" cy="720" r="140" fill="#161514" stroke="#c5a059" stroke-width="1.5"/>
+      <line x1="600" y1="260" x2="600" y2="440" stroke="#c5a059" stroke-width="1.5"/>
+      <line x1="600" y1="1000" x2="600" y2="1180" stroke="#c5a059" stroke-width="1.5"/>
+      <path d="M480 720 L720 720" stroke="#f4f0e8" stroke-opacity="0.4" stroke-width="1"/>
+    
+  </g>
+
+  <rect x="70" y="70" width="1060" height="1360" fill="none" stroke="#dfc282" stroke-opacity="0.25" stroke-width="1"/>
+
+  <text x="120" y="140" fill="#a1a1aa" font-family="'Inter', sans-serif" font-size="14" letter-spacing="0.35em">CHAPTER 05 // SERIES 01</text>
+  <text x="1080" y="140" text-anchor="end" fill="#dfc282" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.25em">ARCHIVAL EDITION</text>
+
+  <text x="600" y="1230" text-anchor="middle" fill="#f4f0e8" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="300" letter-spacing="0.1em">THE BECOMING</text>
+  <text x="600" y="1275" text-anchor="middle" fill="#dfc282" font-family="'Inter', sans-serif" font-size="14" letter-spacing="0.4em">TRANSCENDENCE OF SCARS</text>
+  <text x="600" y="1320" text-anchor="middle" fill="#a1a1aa" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.12em">The wearer is no longer defending against the battle; the battle has become armor.</text>
+</svg>

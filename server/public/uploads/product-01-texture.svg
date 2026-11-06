@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="pgrad" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1f1c18" stop-opacity="0.9"/>
+      <stop offset="65%" stop-color="#121212" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="1500" fill="#0d0d0d"/>
+  <rect width="1200" height="1500" fill="url(#pgrad)"/>
+
+  <rect x="60" y="60" width="1080" height="1380" fill="none" stroke="#262626" stroke-width="1"/>
+  <rect x="75" y="75" width="1050" height="1350" fill="none" stroke="#c5a059" stroke-opacity="0.15" stroke-width="1"/>
+
+  <g>
+    
+      <!-- Interlocking knit patterns -->
+      <g stroke="#262626" stroke-width="1.5" opacity="0.7">
+        <line x1="100" y1="300" x2="1100" y2="300"/>
+        <line x1="100" y1="400" x2="1100" y2="400"/>
+        <line x1="100" y1="500" x2="1100" y2="500"/>
+        <line x1="100" y1="600" x2="1100" y2="600"/>
+        <line x1="100" y1="700" x2="1100" y2="700"/>
+        <line x1="100" y1="800" x2="1100" y2="800"/>
+        <line x1="100" y1="900" x2="1100" y2="900"/>
+        <line x1="100" y1="1000" x2="1100" y2="1000"/>
+      </g>
+      <rect x="400" y="550" width="400" height="400" fill="#151412" stroke="#c5a059" stroke-opacity="0.4" stroke-width="1.5"/>
+      <circle cx="600" cy="750" r="120" fill="none" stroke="#c5a059" stroke-opacity="0.6" stroke-dasharray="3,3" stroke-width="1"/>
+      <text x="600" y="745" text-anchor="middle" fill="#f4f0e8" font-family="'Inter', sans-serif" font-size="14" letter-spacing="0.3em">GARMENT-WASHED FINISH</text>
+      <text x="600" y="775" text-anchor="middle" fill="#c5a059" font-family="'Inter', sans-serif" font-size="12" letter-spacing="0.2em">100% ORGANIC COTTON</text>
+    
+  </g>
+
+  <text x="110" y="130" fill="#a1a1aa" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.3em">GARMENT ARCHIVE // 01</text>
+  <text x="1090" y="130" text-anchor="end" fill="#c5a059" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.25em">FABRIC GRAIN STUDY</text>
+
+  <text x="600" y="1380" text-anchor="middle" fill="#f4f0e8" font-family="'Cormorant Garamond', Georgia, serif" font-size="36" font-weight="300" letter-spacing="0.12em">HEAVYWEIGHT ORGANIC COTTON</text>
+  <text x="600" y="1415" text-anchor="middle" fill="#a1a1aa" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.3em">CRAFTED FOR EMOTIONAL ENDURANCE // ₹999</text>
+</svg>

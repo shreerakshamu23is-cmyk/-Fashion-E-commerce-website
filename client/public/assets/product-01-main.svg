@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="pgrad" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1f1c18" stop-opacity="0.9"/>
+      <stop offset="65%" stop-color="#121212" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="1500" fill="#0d0d0d"/>
+  <rect width="1200" height="1500" fill="url(#pgrad)"/>
+
+  <rect x="60" y="60" width="1080" height="1380" fill="none" stroke="#262626" stroke-width="1"/>
+  <rect x="75" y="75" width="1050" height="1350" fill="none" stroke="#c5a059" stroke-opacity="0.15" stroke-width="1"/>
+
+  <g>
+    
+  <!-- Relaxed Fit T-Shirt Silhouette -->
+  <g opacity="0.85">
+    <!-- Main Body & Sleeves -->
+    <path d="M480 340 C 530 385, 670 385, 720 340 L 890 410 L 820 620 L 740 570 L 740 1260 L 460 1260 L 460 570 L 380 620 L 310 410 Z" fill="#141414" stroke="#2d2d2d" stroke-width="2"/>
+    <!-- Ribbed Crewneck Collar -->
+    <path d="M480 340 C 530 400, 670 400, 720 340 C 670 370, 530 370, 480 340 Z" fill="#1b1b1b" stroke="#c5a059" stroke-opacity="0.4" stroke-width="1.5"/>
+    <path d="M500 355 C 540 410, 660 410, 700 355" fill="none" stroke="#282828" stroke-width="1"/>
+    <!-- Dropped Shoulder Seamlines -->
+    <line x1="480" y1="340" x2="800" y2="470" stroke="#262626" stroke-width="1.5"/>
+    <line x1="720" y1="340" x2="400" y2="470" stroke="#262626" stroke-width="1.5"/>
+    <!-- Sleeve Concealed Hems -->
+    <line x1="820" y1="620" x2="740" y2="570" stroke="#333" stroke-width="2"/>
+    <line x1="380" y1="620" x2="310" y2="410" stroke="#333" stroke-width="2"/>
+    <!-- Bottom Hem Concealed Seam -->
+    <line x1="460" y1="1230" x2="740" y2="1230" stroke="#2a2a2a" stroke-dasharray="4,4" stroke-width="1.5"/>
+    <line x1="460" y1="1260" x2="740" y2="1260" stroke="#333" stroke-width="2"/>
+    <!-- Minimalist Quiet Battles Brass Chest Emblem -->
+    <circle cx="530" cy="520" r="4" fill="#c5a059"/>
+    <line x1="522" y1="520" x2="538" y2="520" stroke="#c5a059" stroke-width="1"/>
+  </g>
+
+  </g>
+
+  <text x="110" y="130" fill="#a1a1aa" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.3em">GARMENT ARCHIVE // 01</text>
+  <text x="1090" y="130" text-anchor="end" fill="#c5a059" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.25em">STUDIO FRONT VIEW</text>
+
+  <text x="600" y="1380" text-anchor="middle" fill="#f4f0e8" font-family="'Cormorant Garamond', Georgia, serif" font-size="36" font-weight="300" letter-spacing="0.12em">THE GENTLE ARMOR T-SHIRT</text>
+  <text x="600" y="1415" text-anchor="middle" fill="#a1a1aa" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.3em">CRAFTED FOR EMOTIONAL ENDURANCE // ₹999</text>
+</svg>

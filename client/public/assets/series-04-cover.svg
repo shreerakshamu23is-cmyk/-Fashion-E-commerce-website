@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="100%" height="100%">
+  <rect width="500" height="600" fill="#0d0d0d"/>
+  
+  <defs>
+    <radialGradient id="s04-glow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#18181b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#09090b" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="500" height="600" fill="url(#s04-glow)"/>
+
+  <!-- Technical Line Art Series 04: Continuous Seam Streetwear Piece -->
+  <g transform="translate(0, 30)">
+    <!-- Continuous Ergonomic Body -->
+    <path
+      d="M 195 120
+         C 215 142, 285 142, 305 120
+         L 400 156
+         L 365 272
+         L 320 248
+         L 320 512
+         L 180 512
+         L 180 248
+         L 135 272
+         L 100 156
+         Z"
+      fill="#121212"
+      stroke="#e4e4e7"
+      stroke-width="1.75"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    />
+
+    <!-- Ribbed Micro Collar -->
+    <path
+      d="M 195 120
+         C 215 150, 285 150, 305 120
+         C 285 135, 215 135, 195 120
+         Z"
+      fill="#181818"
+      stroke="#c5a059"
+      stroke-width="1.5"
+    />
+
+    <!-- Diagonal Anatomical Dart Lines -->
+    <line x1="200" y1="180" x2="180" y2="380" stroke="#71717a" stroke-width="1.25" stroke-dasharray="5,3"/>
+    <line x1="300" y1="180" x2="320" y2="380" stroke="#71717a" stroke-width="1.25" stroke-dasharray="5,3"/>
+
+    <!-- Sleeve Hems -->
+    <line x1="365" y1="272" x2="320" y2="248" stroke="#a1a1aa" stroke-width="1.5"/>
+    <line x1="135" y1="272" x2="100" y2="156" stroke="#a1a1aa" stroke-width="1.5"/>
+
+    <!-- Double Bottom Hem -->
+    <line x1="180" y1="495" x2="320" y2="495" stroke="#71717a" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="180" y1="512" x2="320" y2="512" stroke="#e4e4e7" stroke-width="1.75"/>
+  </g>
+</svg>
+

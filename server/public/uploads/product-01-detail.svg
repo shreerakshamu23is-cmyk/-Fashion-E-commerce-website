@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="pgrad" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1f1c18" stop-opacity="0.9"/>
+      <stop offset="65%" stop-color="#121212" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="1500" fill="#0d0d0d"/>
+  <rect width="1200" height="1500" fill="url(#pgrad)"/>
+
+  <rect x="60" y="60" width="1080" height="1380" fill="none" stroke="#262626" stroke-width="1"/>
+  <rect x="75" y="75" width="1050" height="1350" fill="none" stroke="#c5a059" stroke-opacity="0.15" stroke-width="1"/>
+
+  <g>
+    
+      <!-- Macro texture grid -->
+      <g stroke="#1a1a1a" stroke-width="1">
+        <line x1="200" y1="200" x2="1000" y2="1000"/>
+        <line x1="250" y1="200" x2="1000" y2="950"/>
+        <line x1="300" y1="200" x2="1000" y2="900"/>
+        <line x1="200" y1="250" x2="950" y2="1000"/>
+      </g>
+      <!-- Collar Rib & Seam Focus -->
+      <path d="M350 500 C 480 680, 720 680, 850 500" fill="none" stroke="#c5a059" stroke-width="6"/>
+      <path d="M360 520 C 490 690, 710 690, 840 520" fill="none" stroke="#f4f0e8" stroke-opacity="0.3" stroke-dasharray="4,6" stroke-width="2"/>
+      <circle cx="600" cy="700" r="160" fill="#131313" stroke="#282828" stroke-width="2"/>
+      <circle cx="600" cy="700" r="140" fill="none" stroke="#c5a059" stroke-width="2"/>
+      <text x="600" y="695" text-anchor="middle" fill="#f4f0e8" font-family="'Cormorant Garamond', serif" font-size="22" letter-spacing="0.2em">QUIET BATTLES</text>
+      <text x="600" y="725" text-anchor="middle" fill="#c5a059" font-family="'Inter', sans-serif" font-size="12" letter-spacing="0.3em">CONCEALED SEAMS</text>
+    
+  </g>
+
+  <text x="110" y="130" fill="#a1a1aa" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.3em">GARMENT ARCHIVE // 01</text>
+  <text x="1090" y="130" text-anchor="end" fill="#c5a059" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.25em">MACRO DETAIL 01</text>
+
+  <text x="600" y="1380" text-anchor="middle" fill="#f4f0e8" font-family="'Cormorant Garamond', Georgia, serif" font-size="36" font-weight="300" letter-spacing="0.12em">CONCEALED SEAMS &amp; RIBBED COLLAR</text>
+  <text x="600" y="1415" text-anchor="middle" fill="#a1a1aa" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.3em">CRAFTED FOR EMOTIONAL ENDURANCE // ₹999</text>
+</svg>

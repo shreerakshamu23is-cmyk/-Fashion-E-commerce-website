@@ -1,0 +1,12 @@
+# Quiet Battles™ Robots Configuration
+User-agent: *
+Allow: /
+Allow: /archive
+Allow: /archive/*
+Allow: /product/*
+Allow: /assets/*
+Disallow: /admin
+Disallow: /api/*
+
+Sitemap: https://quietbattles.com/sitemap.xml
+

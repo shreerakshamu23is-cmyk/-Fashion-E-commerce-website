@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <radialGradient id="heroVignette" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#231f1a" stop-opacity="0.85"/>
+      <stop offset="50%" stop-color="#111111" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#090909" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#0a0a0a"/>
+  <rect width="1920" height="1080" fill="url(#heroVignette)"/>
+
+  <!-- Relaxed fit T-shirt outline in subtle ambient glow -->
+  <g opacity="0.45">
+    <path d="M840 280 C 890 325, 1030 325, 1080 280 L 1250 350 L 1180 560 L 1100 510 L 1100 980 L 820 980 L 820 510 L 740 560 L 670 350 Z" fill="#111111" stroke="#2e2e2e" stroke-width="2"/>
+    <path d="M840 280 C 890 340, 1030 340, 1080 280" fill="none" stroke="#c5a059" stroke-opacity="0.5" stroke-width="2"/>
+  </g>
+
+  <rect x="80" y="80" width="1760" height="920" fill="none" stroke="#262626" stroke-width="1"/>
+  <rect x="100" y="100" width="1720" height="880" fill="none" stroke="#c5a059" stroke-opacity="0.1" stroke-width="1"/>
+
+  <text x="140" y="160" fill="#a1a1aa" font-family="'Inter', sans-serif" font-size="14" letter-spacing="0.35em">QUIET BATTLES™ // ARCHIVAL EDITION</text>
+  <text x="1780" y="160" text-anchor="end" fill="#c5a059" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.25em">EST. 2026</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="100%" height="100%">
+  <rect width="500" height="600" fill="#0d0d0d"/>
+  
+  <!-- Subtle architectural grid / dark texture -->
+  <defs>
+    <radialGradient id="lineart-glow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#1a1a1a" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="500" height="600" fill="url(#lineart-glow)"/>
+
+  <!-- Technical Line Art T-Shirt -->
+  <g transform="translate(0, 30)">
+    <!-- Main Body & Sleeves Outline -->
+    <path
+      d="M 195 120
+         C 215 142, 285 142, 305 120
+         L 395 158
+         L 360 270
+         L 318 245
+         L 318 510
+         L 182 510
+         L 182 245
+         L 140 270
+         L 105 158
+         Z"
+      fill="#121212"
+      stroke="#e4e4e7"
+      stroke-width="1.75"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    />
+
+    <!-- Ribbed Crewneck Collar (Double Curve) -->
+    <path
+      d="M 195 120
+         C 215 152, 285 152, 305 120
+         C 285 136, 215 136, 195 120
+         Z"
+      fill="#181818"
+      stroke="#c5a059"
+      stroke-width="1.5"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M 205 128
+         C 222 158, 278 158, 295 128"
+      fill="none"
+      stroke="#71717a"
+      stroke-width="1"
+      stroke-dasharray="3,2"
+    />
+
+    <!-- Dropped Shoulder Lines -->
+    <line x1="195" y1="120" x2="350" y2="190" stroke="#52525b" stroke-width="1.25" stroke-dasharray="4,3"/>
+    <line x1="305" y1="120" x2="150" y2="190" stroke="#52525b" stroke-width="1.25" stroke-dasharray="4,3"/>
+
+    <!-- Sleeve Concealed Hems -->
+    <line x1="360" y1="270" x2="318" y2="245" stroke="#a1a1aa" stroke-width="1.5"/>
+    <line x1="140" y1="270" x2="105" y2="158" stroke="#a1a1aa" stroke-width="1.5"/>
+
+    <!-- Bottom Hem Concealed Stitching -->
+    <line x1="182" y1="492" x2="318" y2="492" stroke="#71717a" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="182" y1="510" x2="318" y2="510" stroke="#e4e4e7" stroke-width="1.75"/>
+
+    <!-- Center Balance Axis (Subtle Architectural Line) -->
+    <line x1="250" y1="155" x2="250" y2="510" stroke="#3f3f46" stroke-width="0.75" stroke-dasharray="6,6"/>
+  </g>
+</svg>

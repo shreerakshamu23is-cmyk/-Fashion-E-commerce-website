@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bsGrad" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#1d1b18" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="1400" fill="#0b0b0b"/>
+  <rect width="1200" height="1400" fill="url(#bsGrad)"/>
+
+  <g stroke="#333" stroke-width="1" opacity="0.6">
+    <line x1="200" y1="200" x2="1000" y2="200"/>
+    <line x1="200" y1="400" x2="1000" y2="400"/>
+    <line x1="200" y1="600" x2="1000" y2="600"/>
+    <line x1="200" y1="800" x2="1000" y2="800"/>
+    <line x1="200" y1="1000" x2="1000" y2="1000"/>
+    <line x1="200" y1="1200" x2="1000" y2="1200"/>
+  </g>
+
+  <!-- Pattern markings -->
+  <path d="M400 350 C 450 395, 590 395, 640 350 L 810 420 L 740 630 L 660 580 L 660 1050 L 380 1050 L 380 580 L 300 630 L 230 420 Z" fill="none" stroke="#f4f0e8" stroke-dasharray="6,8" stroke-opacity="0.4" stroke-width="1.5"/>
+  <circle cx="600" cy="650" r="180" fill="none" stroke="#c5a059" stroke-opacity="0.3" stroke-width="1.5"/>
+  <circle cx="600" cy="650" r="4" fill="#c5a059"/>
+
+  <text x="600" y="1120" text-anchor="middle" fill="#f4f0e8" font-family="'Cormorant Garamond', Georgia, serif" font-size="38" font-weight="300" letter-spacing="0.1em">THE UNSEEN WEIGHT WE CARRY</text>
+  <text x="600" y="1160" text-anchor="middle" fill="#c5a059" font-family="'Inter', sans-serif" font-size="13" letter-spacing="0.3em">ATELIER MANIFESTO // NOISELESS DIGNITY</text>
+</svg>
