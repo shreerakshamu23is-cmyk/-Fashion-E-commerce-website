@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionLabel from '../common/SectionLabel';
 import Button from '../common/Button';
-import { getSeries, getChaptersForSeries, getProducts } from '../../services/api';
+import { getSeries, getChaptersForSeries, getProducts, mediaUrl } from '../../services/api';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -183,7 +183,7 @@ export default function FeaturedSeries() {
                 </div>
 
                 <img
-                  src={currentSeries.lineart_image || `/assets/${currentSeries.slug}-cover.svg`}
+                  src={mediaUrl(currentSeries.lineart_image || `/assets/${currentSeries.slug}-cover.svg`)}
                   onError={(e) => {
                     e.target.src = '/assets/tshirt-lineart.svg';
                   }}
@@ -198,7 +198,7 @@ export default function FeaturedSeries() {
               {/* Right: Real Photograph of the Fabric Garment */}
               <div className="relative overflow-hidden flex items-center justify-center bg-zinc-950">
                 <img
-                  src={currentSeries.cover_image || seriesPhotoMap[currentSeries.slug] || '/assets/photos/series-01-tshirt.webp'}
+                  src={mediaUrl(currentSeries.cover_image || seriesPhotoMap[currentSeries.slug] || '/assets/photos/series-01-tshirt.webp')}
                   onError={(e) => {
                     e.target.src = '/assets/photos/series-01-tshirt.webp';
                   }}

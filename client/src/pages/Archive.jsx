@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowUpRight } from 'lucide-react';
 import SectionLabel from '../components/common/SectionLabel';
 import Button from '../components/common/Button';
-import { getSeries } from '../services/api';
+import { getSeries, mediaUrl } from '../services/api';
 
 const seriesPhotoMap = {
   'series-01': '/assets/photos/series-01-tshirt.webp',
@@ -102,7 +102,7 @@ export default function Archive() {
                     {/* Right: Real Photograph of the Fabric Garment */}
                     <div className="relative overflow-hidden flex items-center justify-center bg-zinc-950">
                       <img
-                        src={series.cover_image || seriesPhotoMap[series.slug] || '/assets/photos/series-01-tshirt.webp'}
+                        src={mediaUrl(series.cover_image || seriesPhotoMap[series.slug] || '/assets/photos/series-01-tshirt.webp')}
                         onError={(e) => {
                           e.target.src = '/assets/photos/series-01-tshirt.webp';
                         }}

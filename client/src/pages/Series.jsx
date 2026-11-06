@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowUpRight, ShoppingBag, Check } from 'lucide-react';
 import SectionLabel from '../components/common/SectionLabel';
 import Button from '../components/common/Button';
-import { getSeriesBySlug, getChaptersForSeries, getProducts } from '../services/api';
+import { getSeriesBySlug, getChaptersForSeries, getProducts, mediaUrl } from '../services/api';
 import { useCart } from '../context/CartContext';
 import NotFound from './NotFound';
 
@@ -189,7 +189,7 @@ export default function Series() {
         />
         <meta property="og:title" content={`${series.title} // QUIET BATTLES™`} />
         <meta property="og:description" content={series.description} />
-        <meta property="og:image" content={series.cover_image || seriesPhotoMap[seriesSlug] || '/assets/photos/series-cover.webp'} />
+        <meta property="og:image" content={mediaUrl(series.cover_image || seriesPhotoMap[seriesSlug] || '/assets/photos/series-cover.webp')} />
       </Helmet>
 
       <div className="pt-32 md:pt-40 pb-20 md:pb-32 max-w-7xl mx-auto px-6 md:px-12">
@@ -306,7 +306,7 @@ export default function Series() {
                 </div>
 
                 <img
-                  src={series.lineart_image || `/assets/${seriesSlug}-cover.svg`}
+                  src={mediaUrl(series.lineart_image || `/assets/${seriesSlug}-cover.svg`)}
                   onError={(e) => {
                     e.target.src = '/assets/tshirt-lineart.svg';
                   }}
@@ -321,7 +321,7 @@ export default function Series() {
               {/* Right: Real Photograph of the Fabric Garment */}
               <div className="relative overflow-hidden flex items-center justify-center bg-zinc-950">
                 <img
-                  src={series.cover_image || seriesPhotoMap[seriesSlug] || '/assets/photos/series-01-tshirt.webp'}
+                  src={mediaUrl(series.cover_image || seriesPhotoMap[seriesSlug] || '/assets/photos/series-01-tshirt.webp')}
                   onError={(e) => {
                     e.target.src = '/assets/photos/series-01-tshirt.webp';
                   }}
@@ -386,7 +386,7 @@ export default function Series() {
                     {/* Chapter Image Thumbnail (uses series/chapter photo, never defaults to unrelated shirt) */}
                     <div className="overflow-hidden aspect-[16/11] bg-zinc-950 border border-zinc-800 relative">
                       <img
-                        src={chapterImg}
+                        src={mediaUrl(chapterImg)}
                         onError={(e) => {
                           e.target.src = seriesCover;
                         }}

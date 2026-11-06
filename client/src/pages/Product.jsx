@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import SectionLabel from '../components/common/SectionLabel';
 import Button from '../components/common/Button';
-import { getProductBySlug } from '../services/api';
+import { getProductBySlug, mediaUrl } from '../services/api';
 import { useCart } from '../context/CartContext';
 
 export default function Product() {
@@ -67,7 +67,7 @@ export default function Product() {
     cleanImages.push(product.cover_image || product.hero_image || '/assets/photos/series-01-tshirt.webp');
   }
 
-  const images = cleanImages;
+  const images = cleanImages.map(mediaUrl);
 
   // Parse sizes
   const sizes = Array.isArray(product.sizes)

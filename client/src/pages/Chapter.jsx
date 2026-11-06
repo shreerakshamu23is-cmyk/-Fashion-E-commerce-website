@@ -9,6 +9,7 @@ import {
   getChaptersForSeries,
   getSeriesBySlug,
   fallbackProducts,
+  mediaUrl,
 } from '../services/api';
 import { useCart } from '../context/CartContext';
 import NotFound from './NotFound';
@@ -218,7 +219,7 @@ export default function Chapter() {
           price: 999,
           description: series?.description || 'Crafted with intentional quiet composure and luxury tailoring.',
         };
-        const currentPhoto = series?.cover_image || seriesPhotoMap[seriesSlug] || currentProd.images?.[0] || '/assets/photos/series-01-tshirt.webp';
+        const currentPhoto = mediaUrl(series?.cover_image || seriesPhotoMap[seriesSlug] || currentProd.images?.[0] || '/assets/photos/series-01-tshirt.webp');
         const lineArtSvg = seriesSlug === 'series-01' ? '/assets/tshirt-lineart.svg' : `/assets/${seriesSlug}-cover.svg`;
 
         const handleAdd = () => {

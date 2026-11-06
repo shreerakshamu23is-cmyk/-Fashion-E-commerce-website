@@ -6,6 +6,7 @@
  */
 
 const API_BASE = (import.meta.env.VITE_API_URL || '/api').replace(/\/+$/, '');
+const API_ORIGIN = /^https?:\/\//i.test(API_BASE) ? new URL(API_BASE).origin : '';
 
 export function apiUrl(path) {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
@@ -17,6 +18,14 @@ export function apiUrl(path) {
       ? normalizedPath.slice(4)
       : normalizedPath
   }`;
+}
+
+export function mediaUrl(path) {
+  if (typeof path !== 'string' || !path || /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(path)) {
+    return path;
+  }
+
+  return path.startsWith('/uploads/') ? `${API_ORIGIN}${path}` : path;
 }
 
 export const fallbackSeries = [

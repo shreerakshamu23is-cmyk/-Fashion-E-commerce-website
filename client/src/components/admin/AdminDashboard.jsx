@@ -17,7 +17,7 @@ import {
   Copy,
 } from 'lucide-react';
 import { useAdminAuth } from '../../context/AdminAuthContext';
-import { apiUrl } from '../../services/api';
+import { apiUrl, mediaUrl } from '../../services/api';
 import Button from '../common/Button';
 
 export default function AdminDashboard() {
@@ -373,7 +373,7 @@ export default function AdminDashboard() {
                   >
                     <div className="flex gap-4 items-start">
                       <img
-                        src={s.cover_image || `/assets/photos/series-0${idx + 1}-tshirt.webp`}
+                        src={mediaUrl(s.cover_image || `/assets/photos/series-0${idx + 1}-tshirt.webp`)}
                         onError={(e) => {
                           e.target.src = '/assets/photos/series-01-tshirt.webp';
                         }}
@@ -536,7 +536,7 @@ export default function AdminDashboard() {
                       <td className="p-4 text-zinc-400">/{c.slug}</td>
                       <td className="p-4">
                         <img
-                          src={c.hero_image}
+                          src={mediaUrl(c.hero_image)}
                           alt={c.title}
                           className="w-10 h-10 object-cover border border-zinc-800"
                         />
@@ -622,7 +622,7 @@ export default function AdminDashboard() {
                   >
                     <div className="flex gap-4 items-start">
                       <img
-                        src={img || '/assets/product-01-main.svg'}
+                        src={mediaUrl(img || '/assets/product-01-main.svg')}
                         alt={p.name}
                         className="w-20 h-24 object-cover border border-zinc-800 bg-zinc-950 flex-shrink-0"
                       />
@@ -725,7 +725,7 @@ export default function AdminDashboard() {
                 >
                   <div className="overflow-hidden aspect-square bg-zinc-950 relative">
                     <img
-                      src={m.url}
+                      src={mediaUrl(m.url)}
                       alt={m.filename}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                     />
