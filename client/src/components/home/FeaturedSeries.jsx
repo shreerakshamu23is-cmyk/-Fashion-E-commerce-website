@@ -14,7 +14,6 @@ const seriesPhotoMap = {
   'series-02': '/assets/photos/series-02-tshirt.webp',
   'series-03': '/assets/photos/series-03-tshirt.webp',
   'series-04': '/assets/photos/series-04-tshirt.webp',
-  'series-05': '/uploads/outfit-ideas-1793966194709-373233.jpg',
 };
 
 const seriesProductMap = {
@@ -183,11 +182,16 @@ export default function FeaturedSeries() {
                 </div>
 
                 <img
-                  src={mediaUrl(currentSeries.lineart_image || `/assets/${currentSeries.slug}-cover.svg`)}
+                  src={mediaUrl(
+                    currentSeries.lineart_image ||
+                      currentSeries.cover_image ||
+                      seriesPhotoMap[currentSeries.slug]
+                  )}
                   onError={(e) => {
-                    e.target.src = '/assets/tshirt-lineart.svg';
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.style.visibility = 'hidden';
                   }}
-                  alt={`${currentSeries.title} Technical Line Art`}
+                  alt={`${currentSeries.title} Fabric Image`}
                   width="400"
                   height="500"
                   className="w-full h-full object-contain p-2 transition-transform duration-700 ease-out group-hover:scale-105"
@@ -200,9 +204,10 @@ export default function FeaturedSeries() {
                 <img
                   src={mediaUrl(currentSeries.cover_image || seriesPhotoMap[currentSeries.slug] || '/assets/photos/series-01-tshirt.webp')}
                   onError={(e) => {
-                    e.target.src = '/assets/photos/series-01-tshirt.webp';
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.style.visibility = 'hidden';
                   }}
-                  alt={`${currentSeries.title} Real Fabric Garment`}
+                  alt={`${currentSeries.title} Fabric Image`}
                   width="400"
                   height="500"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

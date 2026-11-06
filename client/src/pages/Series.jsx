@@ -13,7 +13,6 @@ const seriesPhotoMap = {
   'series-02': '/assets/photos/series-02-tshirt.webp',
   'series-03': '/assets/photos/series-03-tshirt.webp',
   'series-04': '/assets/photos/series-04-tshirt.webp',
-  'series-05': '/uploads/outfit-ideas-1793966194709-373233.jpg',
 };
 
 const seriesProductMap = {
@@ -81,7 +80,7 @@ export default function Series() {
           // If no chapters currently exist for this series, auto-provision 5 dynamic chapters
           if (resolvedChapters.length === 0) {
             const cleanTitle = (seriesData.title || 'ARCHIVE').replace(/SERIES \d+\s*[-–—]\s*/i, '');
-            const cover = seriesData.cover_image || '/assets/photos/series-01-tshirt.webp';
+            const cover = seriesData.cover_image || seriesPhotoMap[seriesSlug] || '';
             resolvedChapters = [
               {
                 id: 1,
@@ -168,7 +167,7 @@ export default function Series() {
   const currentProd = {
     id: series.id || 1,
     ...rawProd,
-    images: [series.cover_image || seriesPhotoMap[seriesSlug] || '/assets/photos/series-01-tshirt.webp'],
+    images: [series.cover_image || seriesPhotoMap[seriesSlug]].filter(Boolean),
     sizes: ['S', 'M', 'L', 'XL'],
   };
 
@@ -189,7 +188,7 @@ export default function Series() {
         />
         <meta property="og:title" content={`${series.title} // QUIET BATTLES™`} />
         <meta property="og:description" content={series.description} />
-        <meta property="og:image" content={mediaUrl(series.cover_image || seriesPhotoMap[seriesSlug] || '/assets/photos/series-cover.webp')} />
+        <meta property="og:image" content={mediaUrl(series.cover_image || seriesPhotoMap[seriesSlug] || '')} />
       </Helmet>
 
       <div className="pt-32 md:pt-40 pb-20 md:pb-32 max-w-7xl mx-auto px-6 md:px-12">
@@ -306,11 +305,12 @@ export default function Series() {
                 </div>
 
                 <img
-                  src={mediaUrl(series.lineart_image || `/assets/${seriesSlug}-cover.svg`)}
+                  src={mediaUrl(series.lineart_image || series.cover_image || seriesPhotoMap[seriesSlug])}
                   onError={(e) => {
-                    e.target.src = '/assets/tshirt-lineart.svg';
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.style.visibility = 'hidden';
                   }}
-                  alt={`${series.title} Technical Line Art`}
+                  alt={`${series.title} Fabric Image`}
                   width="400"
                   height="500"
                   className="w-full h-full object-contain p-2 transition-transform duration-700 ease-out group-hover:scale-105"
@@ -323,9 +323,10 @@ export default function Series() {
                 <img
                   src={mediaUrl(series.cover_image || seriesPhotoMap[seriesSlug] || '/assets/photos/series-01-tshirt.webp')}
                   onError={(e) => {
-                    e.target.src = '/assets/photos/series-01-tshirt.webp';
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.style.visibility = 'hidden';
                   }}
-                  alt={`${series.title} Real Fabric T-Shirt`}
+                  alt={`${series.title} Fabric Image`}
                   width="400"
                   height="500"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -360,11 +361,9 @@ export default function Series() {
           {/* Chapters Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {chapters.map((chap, chapIdx) => {
-              const seriesCover = series.cover_image || seriesPhotoMap[seriesSlug] || '/assets/photos/series-01-tshirt.webp';
-              const chapterImg =
-                chap.hero_image && !chap.hero_image.endsWith('.svg')
-                  ? chap.hero_image
-                  : seriesCover;
+              const seriesCover = series.cover_image || seriesPhotoMap[seriesSlug] || '';
+              const chapterImg = seriesCover ||
+                (chap.hero_image && !chap.hero_image.endsWith('.svg') ? chap.hero_image : '');
               const isFeatured = chap.number === '02' || chapIdx === 1;
 
               return (
@@ -388,7 +387,12 @@ export default function Series() {
                       <img
                         src={mediaUrl(chapterImg)}
                         onError={(e) => {
-                          e.target.src = seriesCover;
+                          e.currentTarget.onerror = null;
+                          if (seriesCover) {
+                            e.currentTarget.src = mediaUrl(seriesCover);
+                          } else {
+                            e.currentTarget.style.visibility = 'hidden';
+                          }
                         }}
                         alt={`${series.title} – Chapter ${chap.number}: ${chap.title}`}
                         width="500"

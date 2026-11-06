@@ -10,7 +10,6 @@ const seriesPhotoMap = {
   'series-02': '/assets/photos/series-02-tshirt.webp',
   'series-03': '/assets/photos/series-03-tshirt.webp',
   'series-04': '/assets/photos/series-04-tshirt.webp',
-  'series-05': '/uploads/outfit-ideas-1793966194709-373233.jpg',
 };
 
 export default function Archive() {
@@ -88,11 +87,16 @@ export default function Archive() {
                       </div>
 
                       <img
-                        src={series.lineart_image || `/assets/${series.slug}-cover.svg`}
+                        src={mediaUrl(
+                          series.lineart_image ||
+                            series.cover_image ||
+                            seriesPhotoMap[series.slug]
+                        )}
                         onError={(e) => {
-                          e.target.src = '/assets/tshirt-lineart.svg';
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.style.visibility = 'hidden';
                         }}
-                        alt={`${series.title} Technical Line Art`}
+                        alt={`${series.title} Fabric Image`}
                         width="400"
                         height="500"
                         className="w-full h-full object-contain p-2 transition-transform duration-700 ease-out group-hover:scale-105"
@@ -104,9 +108,10 @@ export default function Archive() {
                       <img
                         src={mediaUrl(series.cover_image || seriesPhotoMap[series.slug] || '/assets/photos/series-01-tshirt.webp')}
                         onError={(e) => {
-                          e.target.src = '/assets/photos/series-01-tshirt.webp';
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.style.visibility = 'hidden';
                         }}
-                        alt={`${series.title} Real Fabric T-Shirt`}
+                        alt={`${series.title} Fabric Image`}
                         width="400"
                         height="500"
                         className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

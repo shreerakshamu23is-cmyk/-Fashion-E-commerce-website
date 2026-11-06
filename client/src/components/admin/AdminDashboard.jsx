@@ -375,7 +375,8 @@ export default function AdminDashboard() {
                       <img
                         src={mediaUrl(s.cover_image || `/assets/photos/series-0${idx + 1}-tshirt.webp`)}
                         onError={(e) => {
-                          e.target.src = '/assets/photos/series-01-tshirt.webp';
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.style.visibility = 'hidden';
                         }}
                         alt={s.title}
                         className="w-20 h-24 object-cover border border-zinc-800 bg-zinc-950 flex-shrink-0"

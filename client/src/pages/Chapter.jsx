@@ -19,7 +19,6 @@ const seriesPhotoMap = {
   'series-02': '/assets/photos/series-02-tshirt.webp',
   'series-03': '/assets/photos/series-03-tshirt.webp',
   'series-04': '/assets/photos/series-04-tshirt.webp',
-  'series-05': '/uploads/outfit-ideas-1793966194709-373233.jpg',
 };
 
 export default function Chapter() {
@@ -105,8 +104,13 @@ export default function Chapter() {
       ? allChapters[currentIndex + 1]
       : null;
 
-  const heroPhoto = `/assets/photos/chapter-${chapter.number || '02'}.webp`;
-  const heroFallback = `/assets/chapter-${chapter.number || '02'}.svg`;
+  const heroPhoto = mediaUrl(
+    chapter.hero_image ||
+      series?.cover_image ||
+      seriesPhotoMap[seriesSlug] ||
+      `/assets/photos/chapter-${chapter.number || '02'}.webp`
+  );
+  const heroFallback = mediaUrl(series?.cover_image || seriesPhotoMap[seriesSlug] || '');
   const seriesTitle = series?.title || 'QUIET BATTLES™';
 
   return (
@@ -128,7 +132,12 @@ export default function Chapter() {
         <img
           src={heroPhoto}
           onError={(e) => {
-            e.target.src = heroFallback;
+            e.currentTarget.onerror = null;
+            if (heroFallback) {
+              e.currentTarget.src = heroFallback;
+            } else {
+              e.currentTarget.style.visibility = 'hidden';
+            }
           }}
           alt={chapter.title}
           width="1920"
@@ -220,7 +229,12 @@ export default function Chapter() {
           description: series?.description || 'Crafted with intentional quiet composure and luxury tailoring.',
         };
         const currentPhoto = mediaUrl(series?.cover_image || seriesPhotoMap[seriesSlug] || currentProd.images?.[0] || '/assets/photos/series-01-tshirt.webp');
-        const lineArtSvg = seriesSlug === 'series-01' ? '/assets/tshirt-lineart.svg' : `/assets/${seriesSlug}-cover.svg`;
+        const lineArtSvg = mediaUrl(
+          series?.lineart_image ||
+            series?.cover_image ||
+            seriesPhotoMap[seriesSlug] ||
+            ''
+        );
 
         const handleAdd = () => {
           addToCart(currentProd, selectedSize, 1);
@@ -244,9 +258,10 @@ export default function Chapter() {
                         <img
                           src={lineArtSvg}
                           onError={(e) => {
-                            e.target.src = '/assets/tshirt-lineart.svg';
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.style.visibility = 'hidden';
                           }}
-                          alt={`${currentProd.name} Line Art`}
+                          alt={`${currentProd.name} Fabric Image`}
                           width="300"
                           height="350"
                           className="w-full h-full object-contain p-1"
@@ -258,7 +273,8 @@ export default function Chapter() {
                         <img
                           src={currentPhoto}
                           onError={(e) => {
-                            e.target.src = '/assets/photos/series-01-tshirt.webp';
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.style.visibility = 'hidden';
                           }}
                           alt={`${currentProd.name} Real Fabric Garment`}
                           width="300"
