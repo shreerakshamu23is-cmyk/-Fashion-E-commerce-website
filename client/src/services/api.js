@@ -637,7 +637,7 @@ export const fallbackProduct = fallbackProducts[0];
  */
 export async function getSeries() {
   try {
-    const res = await fetch(apiUrl('/series'));
+    const res = await fetch(apiUrl('/series'), { cache: 'no-store' });
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
     return data && data.length > 0 ? data : fallbackSeries;
@@ -652,7 +652,7 @@ export async function getSeries() {
  */
 export async function getSeriesBySlug(slug) {
   try {
-    const res = await fetch(apiUrl(`/series/${slug}`));
+    const res = await fetch(apiUrl(`/series/${slug}`), { cache: 'no-store' });
     if (res.status === 404) return null;
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
@@ -669,7 +669,7 @@ export async function getSeriesBySlug(slug) {
  */
 export async function getChaptersForSeries(seriesSlug) {
   try {
-    const res = await fetch(apiUrl(`/series/${seriesSlug}/chapters`));
+    const res = await fetch(apiUrl(`/series/${seriesSlug}/chapters`), { cache: 'no-store' });
     if (res.status === 404) return [];
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
@@ -685,7 +685,9 @@ export async function getChaptersForSeries(seriesSlug) {
  */
 export async function getChapterBySlug(seriesSlug, chapterSlug) {
   try {
-    const res = await fetch(apiUrl(`/series/${seriesSlug}/chapters/${chapterSlug}`));
+    const res = await fetch(apiUrl(`/series/${seriesSlug}/chapters/${chapterSlug}`), {
+      cache: 'no-store',
+    });
     if (res.status === 404) return null;
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
@@ -704,7 +706,7 @@ export async function getChapterBySlug(seriesSlug, chapterSlug) {
  */
 export async function getProductBySlug(slug) {
   try {
-    const res = await fetch(apiUrl(`/products/${slug}`));
+    const res = await fetch(apiUrl(`/products/${slug}`), { cache: 'no-store' });
     if (res.status === 404) return null;
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
@@ -721,7 +723,7 @@ export async function getProductBySlug(slug) {
  */
 export async function getProducts() {
   try {
-    const res = await fetch(apiUrl('/products'));
+    const res = await fetch(apiUrl('/products'), { cache: 'no-store' });
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
     return data && data.length > 0 ? data : fallbackProducts;

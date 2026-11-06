@@ -5,7 +5,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionLabel from '../common/SectionLabel';
 import Button from '../common/Button';
-import { getSeries, getChaptersForSeries, getProducts, mediaUrl } from '../../services/api';
+import { getChaptersForSeries, getProducts, mediaUrl } from '../../services/api';
+import useSeriesList from '../../hooks/useSeriesList';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,25 +49,15 @@ export default function FeaturedSeries() {
   const sectionRef = useRef(null);
   const cardRef = useRef(null);
 
-  const [seriesList, setSeriesList] = useState([]);
+  const allSeries = useSeriesList();
+  const seriesList = allSeries.filter((s) => s.status === 'published' || !s.status);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [chapters, setChapters] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Load all published series (Requirement 2.e: list every published series)
   useEffect(() => {
-    let mounted = true;
-    getSeries().then((data) => {
-      if (mounted && Array.isArray(data)) {
-        const published = data.filter((s) => s.status === 'published' || !s.status);
-        setSeriesList(published);
-        setLoading(false);
-      }
-    });
-    return () => {
-      mounted = false;
-    };
-  }, []);
+    if (allSeries.length > 0) setLoading(false);
+  }, [allSeries]);
 
   // When selected series changes, fetch its chapters
   useEffect(() => {

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ShoppingBag, Menu, X, Lock, ChevronDown, ChevronRight, Check } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useAdminAuth } from '../../context/AdminAuthContext';
-import { getSeries } from '../../services/api';
+import useSeriesList from '../../hooks/useSeriesList';
 import AdminLoginModal from '../admin/AdminLoginModal';
 
 export default function Navbar() {
@@ -11,24 +11,12 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [seriesDropdownOpen, setSeriesDropdownOpen] = useState(false);
   const [adminModalOpen, setAdminModalOpen] = useState(false);
-  const [seriesList, setSeriesList] = useState([]);
+  const seriesList = useSeriesList().filter((s) => s.status === 'published' || !s.status);
   const dropdownRef = useRef(null);
   const { cartCount, setIsCartOpen } = useCart();
   const { isAuthenticated } = useAdminAuth();
   const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    let mounted = true;
-    getSeries().then((data) => {
-      if (mounted && Array.isArray(data)) {
-        setSeriesList(data.filter((s) => s.status === 'published' || !s.status));
-      }
-    });
-    return () => {
-      mounted = false;
-    };
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {

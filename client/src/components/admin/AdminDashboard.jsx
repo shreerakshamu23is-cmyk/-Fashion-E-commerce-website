@@ -50,8 +50,8 @@ export default function AdminDashboard() {
     setLoading(true);
     try {
       const [sRes, pRes] = await Promise.all([
-        fetch(apiUrl('/series')).then((r) => r.json()),
-        fetch(apiUrl('/products')).then((r) => r.json()),
+        fetch(apiUrl('/series'), { cache: 'no-store' }).then((r) => r.json()),
+        fetch(apiUrl('/products'), { cache: 'no-store' }).then((r) => r.json()),
       ]);
       setSeriesList(Array.isArray(sRes) ? sRes : []);
       setProductsList(Array.isArray(pRes) ? pRes : []);
@@ -76,6 +76,36 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     loadAll();
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    let refreshing = false;
+
+    const refreshSeries = async () => {
+      if (!active || refreshing || document.visibilityState !== 'visible') return;
+      refreshing = true;
+      try {
+        const response = await fetch(apiUrl('/series'), { cache: 'no-store' });
+        if (!response.ok) throw new Error(`Series refresh failed (${response.status})`);
+        const data = await response.json();
+        if (active && Array.isArray(data)) setSeriesList(data);
+      } catch (err) {
+        console.error('Failed to refresh series list:', err);
+      } finally {
+        refreshing = false;
+      }
+    };
+
+    const intervalId = window.setInterval(refreshSeries, 15000);
+    window.addEventListener('focus', refreshSeries);
+    document.addEventListener('visibilitychange', refreshSeries);
+    return () => {
+      active = false;
+      window.clearInterval(intervalId);
+      window.removeEventListener('focus', refreshSeries);
+      document.removeEventListener('visibilitychange', refreshSeries);
+    };
   }, []);
 
   // Handle Image Upload

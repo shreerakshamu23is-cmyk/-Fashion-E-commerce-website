@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
-import { getSeries } from '../../services/api';
+import useSeriesList from '../../hooks/useSeriesList';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
-  const [seriesList, setSeriesList] = useState([]);
-
-  useEffect(() => {
-    let mounted = true;
-    getSeries().then((data) => {
-      if (mounted && Array.isArray(data)) {
-        setSeriesList(data.filter((s) => s.status === 'published' || !s.status).slice(0, 3));
-      }
-    });
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  const seriesList = useSeriesList().filter((s) => s.status === 'published' || !s.status).slice(0, 3);
 
   const handleSubscribe = (e) => {
     e.preventDefault();

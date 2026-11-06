@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ArrowUpRight } from 'lucide-react';
 import SectionLabel from '../components/common/SectionLabel';
 import Button from '../components/common/Button';
-import { getSeries, mediaUrl } from '../services/api';
+import { mediaUrl } from '../services/api';
+import useSeriesList from '../hooks/useSeriesList';
 
 const seriesPhotoMap = {
   'series-01': '/assets/photos/series-01-tshirt.webp',
@@ -13,21 +14,7 @@ const seriesPhotoMap = {
 };
 
 export default function Archive() {
-  const [seriesList, setSeriesList] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let mounted = true;
-    getSeries().then((data) => {
-      if (mounted) {
-        setSeriesList(Array.isArray(data) ? data : []);
-        setLoading(false);
-      }
-    });
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  const seriesList = useSeriesList();
 
   return (
     <>
